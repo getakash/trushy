@@ -1,3 +1,41 @@
-<h1>
-	main page
-</h1>
+<html>
+<head>
+	<title>trashy</title>
+	<base href="/">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-				Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="stylesheets/css.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+	
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">trashy</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollid" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarcollid">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="/login">Login</a>
+      <a class="nav-item nav-link" href="/signup">Signup</a>
+      <a class="nav-item nav-link" href="#">Logout</a>
+      <a class="nav-item nav-link" href="#">forgot password</a>
+    </div>
+  </div>
+</nav>
+	
+	<div class="maindiv">
+		<h1>To-Do List <i class="fas fa-plus"></i></h1>
+		<input type="text" placeholder="ENTER NEW TODO">
+		<ul>
+			<li>  <span class="mainspan"><i class="fas fa-trash-alt"></i></span> Go to cancer patient support grpoup</li>
+			<li>  <span class="mainspan"><i class="fas fa-trash-alt"></i></span> Read Imperial Affliction</li>
+			<li>  <span class="mainspan"><i class="fas fa-trash-alt"></i></span> Mail Van Houten</li>
+		</ul>
+	</div>
+		
+	<script src="stylesheets/script.js"></script>
+</body>
+</html>

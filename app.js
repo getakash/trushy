@@ -2,17 +2,15 @@ var express 	= require("express"),
 	app 		= express(),
 	mongoose	= require("mongoose"),
 	bodyParser	= require("body-parser"),
+	request		= require("request"),
 	user		= require("./Models/user"),
 	card		= require("./Models/card"),
 	checklist	= require("./Models/checklist"),
 	boardtitle	= require("./Models/boardtitles");
 
 mongoose.connect("mongodb://localhost:27017/trashy",{ useNewUrlParser: true });
-
 app.set("view engine", "ejs");
-
-app.use(express.static("public"));
-
+app.use(express.static("Public"));
 app.use(bodyParser.urlencoded({extended:"true"}));
 
 // user.create({
@@ -103,7 +101,7 @@ app.post("/signup/:id", function(req,res){
 })
 })
 
-app.get("/login", function("req,res"){
+app.get("/login", function(req,res){
 	res.render("login");
 })
 
