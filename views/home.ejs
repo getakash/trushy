@@ -7,8 +7,9 @@
 	what title do you want for your board
 </h4>
 
-<form action="/home" method="POST">
-	<input class="form-control form-control-lg" type="text" name="boardTitle[Title]"><br>
+
+<form action="/login/<%= userid %>" method="POST">
+	<input class="form-control form-control-lg" type="text" name="boardtitle[Title]"><br>
 	<button class="btn btn-lg btn-success" type="submit">SUBMIT</button>
 	
 </form>

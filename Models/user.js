@@ -4,11 +4,10 @@ var userschema = new mongoose.Schema({
 	Username: String,
 	Emailid: String,
 	Password: String,
-	Title: String,
-	Card: [{
+	Boardtitle: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Post"
-	}]
+	}],
 });
 
 module.exports = mongoose.model("user", userschema);

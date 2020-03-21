@@ -4,7 +4,8 @@ var express 	= require("express"),
 	bodyParser	= require("body-parser"),
 	user		= require("./Models/user"),
 	card		= require("./Models/card"),
-	checklist	= require("./Models/checklist");
+	checklist	= require("./Models/checklist"),
+	boardtitle	= require("./Models/boardtitles");
 
 mongoose.connect("mongodb://localhost:27017/trashy",{ useNewUrlParser: true });
 
@@ -18,7 +19,6 @@ app.use(bodyParser.urlencoded({extended:"true"}));
 // 	Username: "dolgy pantro",
 // 	Emailid: "dolgypantro@gmail.com",
 // 	Password: "slims1",
-// 	Title: "office party"
 // }, function(err, user){
 // 	if(err){
 // 	console.log(err);
@@ -74,19 +74,33 @@ app.post("/login", function(req,res){
 		}else{
 			var userid = user._id;
 			console.log("new user loggedin");
-			res.redirect("/login/"+userid);   
+			res.redirect("/login/"+userid);
 		}
 	})
 })
 
 app.get("/login/:id", function(req, res){
-	res.render("home");
+	var userid= req.params.id;
+	res.render("home", {userid: userid});
 })
 
 app.post("/login/:id", function(req,res){
-	user.create(req.body.boardTitle, function(err, user){
-		
+	boardtitle.create(req.body.boardtitle, function(err, boardtitle1){
+		if(err){
+			console.log(err);
+		}else{
+			console.log("woo");
+			user.findById(req.params.id, function(err, founduser){
+				if(err){
+					console.log(err);
+				}else{
+					founduser.Boardtitle.push(boardtitle1);
+					res.render("main");
+					console.log("woohoo");
+				}
 	})
+	}
+})
 })
 
 app.listen(3300, function(){
