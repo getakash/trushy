@@ -7,7 +7,11 @@ var express 	= require("express"),
 	checklist	= require("./Models/checklist");
 
 mongoose.connect("mongodb://localhost:27017/trashy",{ useNewUrlParser: true });
+
 app.set("view engine", "ejs");
+
+app.use(express.static("public"));
+
 app.use(bodyParser.urlencoded({extended:"true"}));
 
 // user.create({
@@ -41,30 +45,48 @@ app.use(bodyParser.urlencoded({extended:"true"}));
 // 	})
 // })
 
-checklist.create({
-	Description: "walk my dog"
-}, function(err,checklist){
-	card.findOne({Title: "pack clothes"}, function(err, foundcard){
-		if(err){
-			console.log(err);
-		}else{
-			foundcard.Checklist.push(checklist);
-			console.log(foundcard);
-		}
-	})
-})
+// checklist.create({
+// 	Description: "walk my dog"
+// }, function(err,checklist){
+// 	card.findOne({Title: "pack clothes"}, function(err, foundcard){
+// 		if(err){
+// 			console.log(err);
+// 		}else{
+// 			foundcard.Checklist.push(checklist);
+// 			console.log(foundcard);
+// 		}
+// 	})
+// })
 
 
 app.get("/", function(req, res){
 	res.render("landing");
 })
 
-app.get("/home", function(req, res){
+app.get("/login",function(req,res){
+	res.render("login");
+})
+
+app.post("/login", function(req,res){
+	user.create(req.body.user, function(err, user){
+		if(err){
+			console.log(err);
+		}else{
+			var userid = user._id;
+			console.log("new user loggedin");
+			res.redirect("/login/"+userid);   
+		}
+	})
+})
+
+app.get("/login/:id", function(req, res){
 	res.render("home");
 })
 
-app.post("/home", function(req,res){
-	
+app.post("/login/:id", function(req,res){
+	user.create(req.body.boardTitle, function(err, user){
+		
+	})
 })
 
 app.listen(3300, function(){
