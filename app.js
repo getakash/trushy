@@ -63,28 +63,28 @@ app.get("/", function(req, res){
 	res.render("landing");
 })
 
-app.get("/login",function(req,res){
-	res.render("login");
+app.get("/signup",function(req,res){
+	res.render("signup");
 })
 
-app.post("/login", function(req,res){
+app.post("/signup", function(req,res){
 	user.create(req.body.user, function(err, user){
 		if(err){
 			console.log(err);
 		}else{
 			var userid = user._id;
 			console.log("new user loggedin");
-			res.redirect("/login/"+userid);
+			res.redirect("/signup/"+userid);
 		}
 	})
 })
 
-app.get("/login/:id", function(req, res){
+app.get("/signup/:id", function(req, res){
 	var userid= req.params.id;
 	res.render("home", {userid: userid});
 })
 
-app.post("/login/:id", function(req,res){
+app.post("/signup/:id", function(req,res){
 	boardtitle.create(req.body.boardtitle, function(err, boardtitle1){
 		if(err){
 			console.log(err);
@@ -95,12 +95,20 @@ app.post("/login/:id", function(req,res){
 					console.log(err);
 				}else{
 					founduser.Boardtitle.push(boardtitle1);
-					res.render("main");
+					res.redirect("/signup/"+req.params.id+"/main");
 					console.log("woohoo");
 				}
 	})
 	}
 })
+})
+
+app.get("/login", function("req,res"){
+	res.render("login");
+})
+
+app.get("/signup/:id/main", function(req, res){
+	res.render("main");
 })
 
 app.listen(3300, function(){

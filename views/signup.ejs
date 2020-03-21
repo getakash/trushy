@@ -1,0 +1,16 @@
+<%- include("partials/header") %>
+
+<h2>
+	SignUp here
+</h2>
+
+<form action="/login" method="POST">
+			<label>Username: 			</label><br>
+			<input class="form-control form-control-lg" type="text" name="user[Username]"><br>
+			<label>Emailid: 			</label><br>
+			<input class="form-control form-control-lg" type="text" name="user[Emailid]"><br>
+			<label> Password: 			</label><br>
+			<input  class="form-control form-control-lg" type="password" name="user[Password]"><br>
+			<button class="btn btn-lg btn-success" type="submit">SIGNUP</button>
+</form>
+<%- include("partials/footer") %>
