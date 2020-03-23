@@ -346,7 +346,7 @@ app.delete("/signup/:id1/:id2/:id3", function(req, res){
 				}
 			})
 	})
-
-app.listen(3300, function(){
-	console.log("The trashy server has started");
-})
+var port = process.env.PORT || 3000;
+app.listen(port, function () {
+  console.log("Server Has Started!");
+});
