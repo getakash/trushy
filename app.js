@@ -22,7 +22,7 @@ passport.use(new LocalStrategy(user.authenticate()));
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://akash:Zigzagzoo@1@cluster0-2jgld.mongodb.net/test?retryWrites=true&w=majority",{ useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect("mongodb+srv://akash:Zigzagzoo%401@cluster0-2jgld.mongodb.net/test?retryWrites=true&w=majority",{ useUnifiedTopology: true, useNewUrlParser: true });
 
 app.set("view engine", "ejs");
 app.use(express.static("Public"));
