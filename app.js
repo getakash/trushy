@@ -182,22 +182,46 @@ app.get("/login", function(req,res){
 	res.render("login");
 })
 
-app.post("/login",function(req, res, next){
-	user.findOne({username: req.body.username}, function(err, founduser){
-		if(err){
-			console.log(err);
-		}else{
-			console.log(req.body.username);
-			console.log(founduser._id);
+// app.post("/login",function(req, res, next){
+// 	user.findOne({username: req.body.username}, function(err, founduser){
+// 		if(err){
+// 			console.log(err);
+// 		}else{
+// 			console.log(founduser._id);
 			
-		passport.authenticate("local", {
-	successRedirect: '/signup/'+founduser._id+'/main',
-	failureRedirect: "/login"
-	})(req, res, next);
-		}
-	})
+// 		passport.authenticate("local", {
+// 	successRedirect: '/signup/'+founduser._id+'/main',
+// 	failureRedirect: "/login"
+// 	})(req, res, next);
+// 		}
+// 	})
 	
+// })
+
+app.post("/login",function(req, res, next){
+	passport.authenticate("local", function(err, userr, info){
+		if(err){
+			return next(err);
+		}
+		if(!userr){
+			console.log("!userr");
+			return res.redirect("/login");
+		}
+		req.login(userr, function(err){
+			if(err){
+				console.log(err);
+			}else{
+				console.log("inside login");
+				console.log(userr);
+				res.redirect("/signup/"+userr._id+"/main");
+				
+			}
+		})
+	})(req, res, next);
 })
+
+
+	
 
 app.get("/logout", function(req, res){
 	req.logout();
@@ -348,5 +372,5 @@ app.delete("/signup/:id1/:id2/:id3", function(req, res){
 	})
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
-  console.log("Server Has Started!");
+  console.log("Trushy app server Has Started!");
 });
