@@ -1,4 +1,7 @@
-var mongoose	= require("mongoose"); 
+var express 	= require("express"),
+	app 		= express(),
+	mongoose	= require("mongoose"),
+	clschema	= require("../Models/checklist");
 
 var cardschema = new mongoose.Schema({
 	Title: String,
@@ -7,7 +10,7 @@ var cardschema = new mongoose.Schema({
 	Attatchment: String,
 	Checklist: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: "Post"
+		ref: "clschema"
 	}]
 });
 

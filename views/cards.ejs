@@ -1,0 +1,95 @@
+<html>
+<head>
+	<title>trushy</title>
+	<base href="/">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-				Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="stylesheets/cards.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+	
+</head>
+<body>
+<div class="container">
+	
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">trushy</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollid" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+		
+	<div>
+		<a	class="nav-item nav-link" 
+		   <% if(!currentuser){ %>
+   			href="/login"
+   			<% } else{ %>
+  			 href="/signup/<%= currentuser._id %>/main"
+   			<% } %>
+		   >Your Boards</a>
+	</div>
+		
+  <div class="collapse navbar-collapse justify-content-end" id="navbarcollid">
+    <div class="navbar-nav">
+      <% if(!currentuser) {%>
+		 	<a class="nav-item nav-link" href="/login">Login</a>
+      		<a class="nav-item nav-link" href="/signup">Signup</a>
+			<a class="nav-item nav-link" href="/forgotpassword">forgot password</a>
+		<%}else{%>
+		<p class="nav-item nav-link">Signed in as <%= currentuser.username %>     </p>
+			<a class="nav-item nav-link" href="/logout">Logout</a>
+		<% } %>
+    </div>
+  </div>
+</nav>
+	
+<!-- ................................................ -->
+<br>
+<h1 class="h1 text-white text-center"><%= user.username %>'s board- <span class="h1"> <%= board.Title.toUpperCase() %></span></h1><br>
+
+<div class="container">
+  	<div class="row">
+    	<div class="coloumn col-sm-5">
+      			<h1 class="text-center">
+					To Do
+				</h1>
+			
+			<div class="container">
+			<ul class="row">
+				<% card.forEach(function(x){%>
+					<li class="col-lg col-sm text-center">
+				<div class="card" >
+  					<div class="card-body">
+    					<h5 class="card-title"><%= x.Title %></h5>
+    					<a href="/signup/<%= user._id %>/<%= board._id %>/<%= x._id %>" class="card-link">Card link</a>
+    					
+  					</div>
+					
+				</div>
+						</li>
+					<%})%>
+			</ul>
+				</div>
+   		</div>
+    	<div class="coloumn col-sm-5">
+      			
+			<form action="/signup/<%= user._id %>/main/<%= board._id %>/newcard" method="POST">
+				<h2 class="h2">Add New Card to ToDo :</h2><br>
+				<label class="h5" for="birthday">Title:</label>
+				<input class="form-control form-control-lg" type="text" name="carddata[Title]"><br>
+				<label class="h5" for="birthday">Description:</label>
+				<input class="form-control form-control-lg" type="text" name="carddata[Description]"><br>
+				<label class="h5" for="birthday">Due Date: </label>
+  				<input class="form-control form-control-lg" type="date" name="carddata[Duedate]"><br>
+				<br>
+				<button class=" btn btn-lg btn-success" type="submit">SUBMIT</button>
+			</form>
+    	</div>
+	
+		
+	</div>
+		
+	
+</div>
+	
+
+<%- include("partials/footer") %>

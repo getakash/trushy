@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>trashy</title>
+	<title>trushy</title>
 	<base href="/">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-				Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="stylesheets/css.css">
@@ -10,32 +10,69 @@
 	
 </head>
 <body>
+	<div class="container">
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">trashy</a>
+  <a class="navbar-brand" href="#">trushy</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollid" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+		
+	<div>
+		<a	class="nav-item nav-link" 
+		   <% if(!currentuser){ %>
+   			href="/login"
+   			<% } else{ %>
+  			 href="/signup/<%= currentuser._id %>/main"
+   			<% } %>
+		   >Your Boards</a>
+	</div>
+		
   <div class="collapse navbar-collapse justify-content-end" id="navbarcollid">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="/login">Login</a>
-      <a class="nav-item nav-link" href="/signup">Signup</a>
-      <a class="nav-item nav-link" href="#">Logout</a>
-      <a class="nav-item nav-link" href="#">forgot password</a>
+     <% if(!currentuser) {%>
+		 	<a class="nav-item nav-link" href="/login">Login</a>
+      		<a class="nav-item nav-link" href="/signup">Signup</a>
+			<a class="nav-item nav-link" href="/forgotpassword">forgot password</a>
+		<%}else{%>
+			<p class="nav-item nav-link">Signed in as <%= currentuser.username %>     </p>
+			<a class="nav-item nav-link" href="/logout">Logout</a>
+		<% } %>
     </div>
   </div>
 </nav>
 	
+	<div>
+		<h2 class="text-center">
+			welcome <%= username.toUpperCase()%>
+		</h2>
+	</div>
+	
 	<div class="maindiv">
-		<h1>To-Do List <i class="fas fa-plus"></i></h1>
-		<input type="text" placeholder="ENTER NEW TODO">
+		<h1>Your Boards <a href="/signup/<%= userid %>"><i class="fas fa-plus"></i></a></h1>
+		<input type="text" placeholder="Create New Board">
 		<ul>
-			<li>  <span class="mainspan"><i class="fas fa-trash-alt"></i></span> Go to cancer patient support grpoup</li>
-			<li>  <span class="mainspan"><i class="fas fa-trash-alt"></i></span> Read Imperial Affliction</li>
-			<li>  <span class="mainspan"><i class="fas fa-trash-alt"></i></span> Mail Van Houten</li>
+			<% board.forEach(function(x){%>
+			<li class="d-flex flex-row">
+				<span class="text-center h4 mr-4 mt-3"><%= x.Title.toUpperCase() %></span>
+		
+		<div class="ml-5 mt-3 ">
+		
+			<form action="/signup/<%= userid %>/<%= x._id %>?_method=DELETE" method="POST">
+			<button class="btn btn-danger">Delete</button>
+			</form>
+		</div>
+		
+		<div class="ml-2 mt-3">
+			<a href="/signup/<%= userid %>/main/<%= x._id %>"><button type="button" class="btn btn-success">Explore</button>				</a>
+		</div>
+			</li>
+		
+	
+			<% }) %>
 		</ul>
 	</div>
-		
+	
 	<script src="stylesheets/script.js"></script>
 </body>
 </html>

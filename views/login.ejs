@@ -1,14 +1,14 @@
 <%- include("partials/header") %>
 
-<h2>
-	Login here
+<h2 class="display-2 font-weight-bold text-center text-white">
+	Login
 </h2>
 
 <form action="/login" method="POST">
-			<label>Emailid: 			</label><br>
-			<input class="form-control form-control-lg" type="text" name="user[Emailid]"><br>
-			<label> Password: 			</label><br>
-			<input  class="form-control form-control-lg" type="password" name="user[Password]"><br>
+			<label class="display-4 text-right text-light">Username: 			</label><br>
+			<input class="form-control form-control-lg" type="text" name="username"><br>
+			<label class="display-4 text-right text-light"> Password: 			</label><br>
+			<input  class="form-control form-control-lg" type="password" name="password"><br>
 			<button class="btn btn-lg btn-success" type="submit">LogIn</button>
 </form>
 <%- include("partials/footer") %>

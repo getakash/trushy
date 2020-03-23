@@ -1,27 +1,49 @@
 <html>
 <head>
-	<title>trashy</title>
+	<title>trushy</title>
 	<base href="/">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-				Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<!-- <link rel="stylesheet" type="text/css" href="stylesheets/css.css"> -->
+	<link rel="stylesheet" type="text/css" href="stylesheets/header.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 	
 </head>
 <body>
-
+<div class="container">
+	
+	
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">trashy</a>
+  <a class="navbar-brand" href="#">trushy</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarcollid" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+		
+	<div>
+		<a	class="nav-item nav-link" 
+		   <% if(!currentuser){ %>
+   			href="/login"
+   			<% } else{ %>
+  			 href="/signup/<%= currentuser._id %>/main"
+   			<% } %>
+		   >Your Boards</a>
+	</div>	
+		
   <div class="collapse navbar-collapse justify-content-end" id="navbarcollid">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="/login">Login</a>
-      <a class="nav-item nav-link" href="/signup">Signup</a>
-      <a class="nav-item nav-link" href="#">Logout</a>
-      <a class="nav-item nav-link" href="#">forgot password</a>
+		<% if(!currentuser) {%>
+		 	<a class="nav-item nav-link" href="/login">Login</a>
+      		<a class="nav-item nav-link" href="/signup">Signup</a>
+			<a class="nav-item nav-link" href="/forgotpassword">forgot password     </a>
+		<%}else{%>
+			<p class="nav-item nav-link">Signed in as <%= currentuser.username %></p>
+			<a class="nav-item nav-link" href="/logout">Logout</a>
+		<% } %>
+     
+      
+      
     </div>
   </div>
 </nav>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.js"></script>

@@ -1,0 +1,50 @@
+body{
+	background: url("https://images.unsplash.com/photo-1514064019862-23e2a332a6a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1832&q=80");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.navbar{
+	margin: 10px 5px 10px 5px;
+	padding: 0.5px 15px 0.5px 15px;
+	background: #88ffff;
+	border: 1.5px solid black;
+	border-radius: 5px;
+}
+.col-sm-25{
+	width: 12rem;
+}
+/* .col-xs{
+	width: 5rem;
+} */
+
+.nav-item{
+	font-size:17px;
+	margin-bottom: 0px;
+}
+.navbar-brand{
+	font-size:25px;
+	font-family: "Lucida Console";
+	font-weight: 55rem;
+}
+
+.container{
+	
+}
+.coloumn{
+	background: pink;
+	margin: 20px auto 20px auto ;
+	padding: auto auto auto auto ;
+	border: 2px solid black;
+}
+h2{
+	font-size: 20px;
+	text-align: center;
+
+}
+
+
+h1 span{
+	font-weight: 20rem;
+	text-decoration: underline;
+}
