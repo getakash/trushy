@@ -22,7 +22,7 @@ passport.use(new LocalStrategy(user.authenticate()));
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://akash:Zigzagzoo1node a@cluster0-2jgld.mongodb.net/test?retryWrites=true&w=majority",{ useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect("mongodb+srv://akash:Zigzagzoo@1@cluster0-2jgld.mongodb.net/test?retryWrites=true&w=majority",{ useUnifiedTopology: true, useNewUrlParser: true });
 
 app.set("view engine", "ejs");
 app.use(express.static("Public"));
@@ -347,6 +347,6 @@ app.delete("/signup/:id1/:id2/:id3", function(req, res){
 			})
 	})
 
-app.listen(3300,'0.0.0.0/0', function(){
+app.listen(3300, function(){
 	console.log("The trashy server has started");
 })
