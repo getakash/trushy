@@ -106,15 +106,18 @@ app.get("/forgotpassword", function(req, res){
 app.post("/forgotpassword", function(req, res){
 	user.findOne({username: req.body.username}, function(err, founduser){
 		if(err){
-			console.log(err);
 			res.redirect("/forgotpassword");
 		}else{
-			if(req.body.number == founduser.Secretnumber){
+			if(founduser == null){
+				res.redirect("/forgotpassword");
+			}else{
+				if(req.body.number == founduser.Secretnumber){
 				res.redirect("/passwordrecovery/"+founduser._id);
 			}else{
 				res.redirect("/forgotpassword");
 			}
-				
+			}
+					
 		}
 	})
 })
@@ -123,6 +126,7 @@ app.get("/passwordrecovery/:id", function(req, res){
 	user.findById(req.params.id, function(err, founduser){
 		if(err){
 			console.log(err);
+			
 		}else{
 			console.log(founduser.Password);
 			res.send(founduser.Password);
