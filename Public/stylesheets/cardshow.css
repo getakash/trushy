@@ -4,6 +4,10 @@ body{
 	background-repeat: no-repeat;
 }
 
+.dblue{
+	background: #1e1173;
+}
+
 .card-body{
 	background: url("https://images.unsplash.com/photo-1523878288860-7ad281611901?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80");
 }
