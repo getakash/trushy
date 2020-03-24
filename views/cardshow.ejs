@@ -47,7 +47,7 @@
     <div class="text-center col-lg col-sm col-md">
 		
 		
-		<div class="mb-4 card" style="width:;">
+		<div class="mb-4 mt-4 card">
   			<div class="card-body">
     			<h5 class=" text-weight-bold h2" class="card-title">Title:</h5>
 				<h4 class="h4 dblue text-weight-bold"><%=card.Title.toUpperCase()%></h4><br>
@@ -59,8 +59,8 @@
 				<h5 class="dblue text-weight-bold"><%=card.Duedate.toDateString()%></h5><br>
    				 
 				<form action="/signup/<%= userid %>/<%= boardid %>/<%= card._id%>/?_method=DELETE" method="POST">
-			<button class="btn btn-danger">Delete</button>
-		</form>
+					<button class="btn btn-danger">Delete</button>
+				</form>
   			</div>
 		</div>
 		
