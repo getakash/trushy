@@ -150,12 +150,12 @@ app.post("/signup", function(req,res){
 	})
 })
 
-app.get("/signup/:id", function(req, res){
+app.get("/signup/:id",isloggedin, function(req, res){
 	var userid= req.params.id;
 	res.render("home", {userid: userid});
 })
 
-app.post("/signup/:id", function(req,res){
+app.post("/signup/:id",isloggedin,  function(req,res){
 	boardtitle.create(req.body.boardtitle, function(err, boardtitle1){
 		if(err){
 			console.log(err);
@@ -232,7 +232,7 @@ app.get("/logout", function(req, res){
 	res.redirect("/");
 })
 
-app.get("/signup/:id/main", function(req, res){
+app.get("/signup/:id/main",isloggedin, function(req, res){
 	user.findById(req.params.id, function(err, founduser){
 		if(err){
 			console.log(err);
@@ -249,7 +249,7 @@ app.get("/signup/:id/main", function(req, res){
 	
 })
 
-app.get("/signup/:id1/main/:id2", function(req, res){
+app.get("/signup/:id1/main/:id2",isloggedin, function(req, res){
 	user.findById(req.params.id1, function(err, founduser){
 		if(err){
 			console.log(err);
@@ -274,7 +274,7 @@ app.get("/signup/:id1/main/:id2", function(req, res){
 
 
 
-app.post("/signup/:id1/main/:id2/newcard", function(req, res){
+app.post("/signup/:id1/main/:id2/newcard",isloggedin, function(req, res){
 	card.create(req.body.carddata, function(err, createdcard){
 		if(err){
 			console.log(err);
@@ -301,7 +301,7 @@ app.post("/signup/:id1/main/:id2/newcard", function(req, res){
 	
 })
 
-app.get("/signup/:id1/:id2/:id3", function(req, res){
+app.get("/signup/:id1/:id2/:id3",isloggedin, function(req, res){
 	card.findById(req.params.id3, function(err, foundcard){
 		if(err){
 			console.log(err);
@@ -313,7 +313,7 @@ app.get("/signup/:id1/:id2/:id3", function(req, res){
 })
 
 
-app.put("/signup/:id1/:id2/:id3", function(req,res){
+app.put("/signup/:id1/:id2/:id3",isloggedin,  function(req,res){
 	card.findByIdAndUpdate(req.params.id3, req.body.carddata, function(err, updatedcard){
 		if(err){
 			console.log(err);
@@ -324,7 +324,7 @@ app.put("/signup/:id1/:id2/:id3", function(req,res){
 })
 
 
-app.delete("/signup/:id1/:id2", function(req, res){
+app.delete("/signup/:id1/:id2",isloggedin, function(req, res){
 	boardtitle.findByIdAndRemove(req.params.id2, function(err, nul){
 		if(err){
 	 		console.log(err);
@@ -350,7 +350,7 @@ app.delete("/signup/:id1/:id2", function(req, res){
 			})
 	})
 
-app.delete("/signup/:id1/:id2/:id3", function(req, res){
+app.delete("/signup/:id1/:id2/:id3",isloggedin, function(req, res){
 	card.findByIdAndRemove(req.params.id3, function(err, nul){
 		if(err){
 	 		console.log(err);
@@ -374,6 +374,16 @@ app.delete("/signup/:id1/:id2/:id3", function(req, res){
 				}
 			})
 	})
+
+function isloggedin(req, res, next){
+	if(req.isAuthenticated()){
+	   return next();
+	}else{
+		res.redirect("/login");
+	}
+}
+
+
 var port = process.env.PORT || 3000;
 app.listen(port, function () {
   console.log("Trushy app server Has Started!");

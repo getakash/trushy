@@ -56,7 +56,10 @@
     			<h5 class=" text-weight-bold h2" class="card-title">Attatchment:</h5>
 				<a class="dblue text-weight-bold text h5" href="<%= card.Attatchment %>"><h4><%=card.Attatchment%></h4></a><br>
     			<h5 class=" text-weight-bold h2" class="card-title">Due-Date:</h5>
-				<h5 class="dblue text-weight-bold"><%=card.Duedate.toDateString()%></h5><br>
+				<h5 class="dblue text-weight-bold"><%=
+						if(card.Duedate == null){}else{card.Duedate.toDateString()}
+						
+					%></h5><br>
    				 
 				<form action="/signup/<%= userid %>/<%= boardid %>/<%= card._id%>/?_method=DELETE" method="POST">
 					<button class="btn btn-danger">Delete</button>
