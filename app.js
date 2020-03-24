@@ -160,7 +160,7 @@ app.post("/signup/:id",isloggedin,  function(req,res){
 		if(err){
 			console.log(err);
 		}else{
-			console.log("woo");
+			
 			user.findById(req.params.id, function(err, founduser){
 				if(err){
 					console.log(err);											n
@@ -170,9 +170,9 @@ app.post("/signup/:id",isloggedin,  function(req,res){
 						if(err){
 							console.log(err);
 						}else{
-							console.log(updateduser.Boardtitle);
+							
 							res.redirect("/signup/"+req.params.id+"/main");
-							console.log("woohoo");
+							
 						}
 					})
 					
@@ -208,15 +208,14 @@ app.post("/login",function(req, res, next){
 			return next(err);
 		}
 		if(!userr){
-			console.log("!userr");
+			
 			return res.redirect("/login");
 		}
 		req.login(userr, function(err){
 			if(err){
 				console.log(err);
 			}else{
-				console.log("inside login");
-				console.log(userr);
+				
 				res.redirect("/signup/"+userr._id+"/main");
 				
 			}
@@ -288,8 +287,7 @@ app.post("/signup/:id1/main/:id2/newcard",isloggedin, function(req, res){
 						if(err){
 							console.log(err);
 						}else{
-							console.log(updatedboard.Cards);
-							console.log(createdcard);
+							
 							res.redirect("/signup/"+req.params.id1+"/main/"+req.params.id2);
 						}
 					})
@@ -338,7 +336,7 @@ app.delete("/signup/:id1/:id2",isloggedin, function(req, res){
 						if(err){
 							console.log(err);
 						}else{
-							console.log("..........");
+						
 					console.log(founduser.Boardtitle);
 					res.redirect("/signup/"+req.params.id1+"/main");
 						}
@@ -364,7 +362,7 @@ app.delete("/signup/:id1/:id2/:id3",isloggedin, function(req, res){
 						if(err){
 							console.log(err);
 						}else{
-							console.log("..........");
+							
 					res.redirect("/signup/"+req.params.id1+"/main/"+req.params.id2);
 						}
 					})
