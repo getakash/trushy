@@ -1,4 +1,4 @@
-<html>
+dark<html>
 <head>
 	<title>trushy</title>
 	<base href="/">
@@ -50,13 +50,13 @@
 		<div class="mb-4 card" style="width:;">
   			<div class="card-body">
     			<h5 class=" text-weight-bold h2" class="card-title">Title:</h5>
-				<h4 class="h4 text-primary"><%=card.Title.toUpperCase()%></h4><br>
+				<h4 class="h4 text-dark"><%=card.Title.toUpperCase()%></h4><br>
     			<h5 class=" text-weight-bold h2" class="card-title">Description:</h5>
-				<p class="text-primary h5"><%=card.Description%></p><br>
+				<p class="text-dark h5"><%=card.Description%></p><br>
     			<h5 class=" text-weight-bold h2" class="card-title">Attatchment:</h5>
-				<a class="text-primary h5" href="<%= card.Attatchment %>"><h4><%=card.Attatchment%></h4></a><br>
+				<a class="text-dark h5" href="<%= card.Attatchment %>"><h4><%=card.Attatchment%></h4></a><br>
     			<h5 class=" text-weight-bold h2" class="card-title">Due-Date:</h5>
-				<h5 class="text-primary"><%=card.Duedate.toDateString()%></h5><br>
+				<h5 class="text-dark"><%=card.Duedate.toDateString()%></h5><br>
    				 
 				<form action="/signup/<%= userid %>/<%= boardid %>/<%= card._id%>/?_method=DELETE" method="POST">
 			<button class="btn btn-danger">Delete</button>

@@ -5,7 +5,7 @@ body{
 }
 
 .card-body{
-	background: url("https://images.unsplash.com/photo-1548700819-892a76eed325?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80");
+	background: url("https://images.unsplash.com/photo-1523878288860-7ad281611901?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80");
 }
 
 .navbar{
@@ -25,10 +25,10 @@ body{
 	font-weight: 55rem;
 }
 .h1{
-	color: red;
+	color: #9af3f5;
 	text-decoration: underline;
 }
 .h2{
-	color: red;
+	color: Black;
 	font-weight: 100px;
 }
