@@ -1,4 +1,4 @@
-primary<html>
+ <html>
 <head>
 	<title>trushy</title>
 	<base href="/">
@@ -50,13 +50,13 @@ primary<html>
 		<div class="mb-4 card" style="width:;">
   			<div class="card-body">
     			<h5 class=" text-weight-bold h2" class="card-title">Title:</h5>
-				<h4 class="h4 dblue"><%=card.Title.toUpperCase()%></h4><br>
+				<h4 class="h4 dblue text-weight-bold"><%=card.Title.toUpperCase()%></h4><br>
     			<h5 class=" text-weight-bold h2" class="card-title">Description:</h5>
-				<p class="dblue h5"><%=card.Description%></p><br>
+				<p class="dblue text-weight-bold h5"><%=card.Description%></p><br>
     			<h5 class=" text-weight-bold h2" class="card-title">Attatchment:</h5>
-				<a class="dblue text h5" href="<%= card.Attatchment %>"><h4><%=card.Attatchment%></h4></a><br>
+				<a class="dblue text-weight-bold text h5" href="<%= card.Attatchment %>"><h4><%=card.Attatchment%></h4></a><br>
     			<h5 class=" text-weight-bold h2" class="card-title">Due-Date:</h5>
-				<h5 class="dblue"><%=card.Duedate.toDateString()%></h5><br>
+				<h5 class="dblue text-weight-bold"><%=card.Duedate.toDateString()%></h5><br>
    				 
 				<form action="/signup/<%= userid %>/<%= boardid %>/<%= card._id%>/?_method=DELETE" method="POST">
 			<button class="btn btn-danger">Delete</button>
@@ -67,18 +67,7 @@ primary<html>
 		
 		
 		
-		<!-- <h3 class=" text-weight-bold h2">Title:</h3>
-      	<h4 class="h4 text-white"><%=card.Title.toUpperCase()%></h4><br>
-		<h3 class=" text-weight-bold h2">Description:</h3>
-		<p class="text-white h5"><%=card.Description%></p><br>
-		<h3 class=" text-weight-bold h2">Attatchment:</h3>
-		<a class="text-white h5" href="<%= card.Attatchment %>"><h4><%=card.Attatchment%></h4></a><br>
-		<h3 class=" h2">LastDate:</h3>
-		<h5 class="text-white"><%=card.Duedate.toDateString()%></h5><br>
 		
-		<form action="/signup/<%= userid %>/<%= boardid %>/<%= card._id%>/?_method=DELETE" method="POST">
-			<button class="btn btn-danger">Delete</button>
-		</form> -->
 		
     </div>
 	
