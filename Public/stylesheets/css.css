@@ -23,9 +23,7 @@ body{
 
 .maindiv{
 	margin: 100px auto;
-	
-	background: #f7f7f7;
-	width: 500px;
+	max-width: 500px;
 	box-shadow: 0 0 4px rgba(0,0,0,0.1);
 
 }
